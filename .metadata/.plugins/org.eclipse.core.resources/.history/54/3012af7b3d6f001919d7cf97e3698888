@@ -1,0 +1,14 @@
+import java.util.*;
+public class revList2 {
+
+	public static void main(String[] args) {
+		List<String> arr= new ArrayList();
+		String s;
+		Scanner sc= new Scanner(System.in);
+		s=sc.nextLine();
+		
+		arr=s.split("\\s");
+
+	}
+
+}

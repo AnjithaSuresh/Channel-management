@@ -1,0 +1,68 @@
+package backtracking;
+
+import java.util.Scanner;
+
+public class NQueen {
+	public static int n;
+	public static int blk[][];
+	
+	public static boolean isSafe(int block[][], int row, int col) {
+		for(int i=col; i>=0; --i) {
+			if(block[row][i]==1)
+				return false;
+				
+		}
+		
+		for(int i=row-1, j=col-1; i>=0 && j>=0; --i,--j) {
+			if(block[i][j]==1)
+				return false;
+		}
+		
+		for(int i=row+1, j=col-1; i<n && j>=0; ++i,--j) {
+			if(block[i][j]==1)
+				return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean nqueen(int block[][], int col) {
+		if(col>=n) {
+			return true;
+		}
+		boolean res=false;
+		for(int i=0; i<n; ++i) {
+			if(isSafe(block, i, col)) {
+				block[i][col]=1;
+				
+				if(nqueen(block, col+1)==true) {
+					return true;
+				}
+				//res=nqueen(block, col+1) || res;
+				
+				block[i][col]=0;
+			}
+		}
+		return res;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		n=sc.nextInt();
+		blk=new int[n][n];
+		if(nqueen(blk, 0)) {
+			//System.out.print(blk);
+			for(int i=0; i<n; ++i) {
+				for(int j=0; j<n; ++j) {
+					System.out.print(blk[i][j]+" ");
+				}
+				System.out.println();
+			}
+		}
+		else {
+			System.out.println("Not possible");
+		}
+
+	}
+
+}

@@ -1,0 +1,41 @@
+import java.util.Stack;
+public class QwithStack {
+
+	static Stack<Integer> s1= new Stack();
+	static Stack<Integer> s2= new Stack();
+	
+	public static void enQ(int x) {
+		s1.push(x);
+	}
+	
+	public static int deQ() {
+		int x;
+		if(s1.empty() && s2.empty()) {
+			System.out.println("q is empty");
+			System.exit(0);
+		}
+		else if(s2.empty()) {
+			while(!s1.empty()) {
+				s2.push(s1.pop());
+			}
+			x=s2.pop();
+			return x;
+		}
+		else {
+			x=s2.pop();
+			return x;
+		}
+		return 0;
+	}
+	
+	public static void main(String args[]) {
+		QwithStack q= new QwithStack();
+		q.enQ(1);
+		q.enQ(2);
+		q.enQ(3);
+		
+		System.out.println(q.deQ());
+		System.out.println(q.deQ());
+		System.out.println(q.deQ());
+	}
+}

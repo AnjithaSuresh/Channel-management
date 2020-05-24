@@ -1,0 +1,38 @@
+package prep;
+import java.util.*;
+
+public class repeat {
+	static final int no_of_char= 256;
+	static int count[]= new int[no_of_char];
+	
+	static void getcountarray(String str) {
+		for(int i=0; i<str.length(); ++i) {
+			count[str.charAt(i)]++;
+		}
+	}
+	
+	int firstrepeat(String str) {
+		getcountarray(str);
+		int index=-1;
+		int i=0;
+		while(i<str.length()) {
+			if(count[str.charAt(i)]==1) {
+				index=i;
+				break;
+			}
+			++i;
+		}
+		return index;
+	}
+	
+	public static void main(String args[]) {
+		repeat r= new repeat();
+		String str= "geekforgefeks";
+		int index=r.firstrepeat(str);
+		if(index != -1) {
+			System.out.println(str.charAt(index));
+		}
+		else
+			System.out.println("No non repeating");
+	}
+}

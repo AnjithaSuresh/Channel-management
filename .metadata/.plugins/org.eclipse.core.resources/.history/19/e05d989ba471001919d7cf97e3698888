@@ -1,0 +1,65 @@
+import java.util.Stack;
+public class MinSta extends Stack{
+	static Stack<Integer> min= new Stack();
+	
+	public void push(int x) {
+		if(super.isEmpty()==true) {
+			super.push(x);
+			min.push(x);
+		}
+		else {
+			super.push(x);
+			int y= min.get(0);
+			if(x<y) {
+				min.push(x);
+			}
+			else {
+				min.push(y);
+			}
+		}
+	}
+	
+	public Integer pop() {
+		if(super.isEmpty()) {
+			System.out.println("Stack is empty");
+			System.exit(0);
+		}
+		else {
+			min.pop();
+			int x;
+			x=(int)super.pop();
+			return x;
+		}
+		return 0;
+	}
+	
+	public Integer getMin() {
+		int x;
+		x=min.get(0);
+		return x;
+	}
+	
+	public static void main(String args[]) {
+		MinSta st= new MinSta();
+		st.push(4);
+		st.push(3);
+		st.push(2);
+		st.push(1);
+		
+		st.getMin();
+		st.pop();
+
+		st.getMin();
+		st.pop();
+
+		st.getMin();
+		st.pop();
+
+		st.getMin();
+		st.pop();
+
+		st.getMin();
+		st.pop();
+
+	}
+}

@@ -1,0 +1,26 @@
+import java.util.Stack;
+public class QwiS2 {
+	static Stack<Integer> s1= new Stack();
+	static Stack<Integer> s2= new Stack();
+	
+	public void enq(int x) {
+		while(!s1.empty()) {
+			s2.push(s1.pop());
+		}
+		s1.push(x);
+		while(!s2.empty()) {
+			s1.push(s2.pop());
+		}
+	}
+	
+	public int deq() {
+		if(s1.empty()) {
+			System.out.println("Q empty");
+			System.exit(0);
+		}
+		int x=s1.pop();
+		return x;
+	}
+	
+
+}

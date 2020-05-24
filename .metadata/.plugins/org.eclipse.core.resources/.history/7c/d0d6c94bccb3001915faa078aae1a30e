@@ -1,0 +1,67 @@
+package prep;
+import java.util.*;
+public class nextGreatno {
+	public static int largest(char arr[]) {
+		int n=arr.length;
+		char l=arr[0];
+		int ind=0;
+		for(int i=0; i<n; ++i) {
+			if(arr[i]>l)
+			{
+					l=arr[i];
+					
+					//System.out.println(l);
+					
+					ind=i;
+				}
+		}
+		//System.out.println(l);
+		return ind;
+	}
+	
+	public static int smallest(char arr[], int l) {
+		int ind=l;
+		int small=Integer.MAX_VALUE;
+		for(int i=l; i<arr.length; ++i) {
+			if(small>Character.getNumericValue(arr[i])) {
+				small=Character.getNumericValue(arr[i]);
+				ind=i;
+			}
+		}
+		return ind;
+	}
+	
+	public static void sortsect(char arr[], int l) {
+		char newarr[]= new char[arr.length-l];
+		for(int i=0; i<arr.length-l; ++i) {
+			newarr[i]=arr[l+i];
+		}
+		Arrays.sort(newarr);
+		for(int i=0; i<arr.length-l; ++i) {
+			arr[l+i]=newarr[i];
+		}
+	}
+	
+	public static void nextGreat(String str) {
+		char arr[]= new char[str.length()];
+		arr=str.toCharArray();
+		int largeInd= largest(arr);
+	
+		if(largeInd==0) {
+			System.out.println("Not Possible");
+			return;
+		}
+		int smallInd= smallest(arr, largeInd);
+		char t=arr[largeInd-1];
+		arr[largeInd-1]=arr[smallInd];
+		arr[smallInd]=t;
+		sortsect(arr,largeInd);
+		System.out.println(arr);
+		
+		
+	}
+	public static void main(String args[]) {
+		String str="1234";
+		nextGreat(str);
+	}
+}

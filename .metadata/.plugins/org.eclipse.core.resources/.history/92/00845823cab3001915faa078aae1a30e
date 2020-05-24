@@ -1,0 +1,13 @@
+package prep;
+import java.util.*;
+public class nextGreatno {
+	public static void nextGreat(String str) {
+		char arr[]= new char[str.length()];
+		//int largeInd= largest(arr);//
+		System.out.println('1'>'2');
+		
+	}
+	public static void main(String args[]) {
+		System.out.println('8'>'2');
+	}
+}
